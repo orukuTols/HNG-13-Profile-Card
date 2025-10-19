@@ -215,7 +215,7 @@ ul {
 
 
 /* ===== Large screens (desktop and up) ===== */
-@media (max-width: 379px) {
+@media (max-width: 319px) {
 article {
     width: 100%; /* full width */
     height: 450px;
@@ -236,7 +236,7 @@ article {
 
 
 
-@media (min-width: 380px) {
+@media (min-width: 320px) {
   article {
     width: 380px; /* cap growth */
    height: 500px;
