@@ -17,7 +17,7 @@ function updateTime() {
 
 let sem = `  ${hours}:${minutes}:${seconds}:${milliseconds}`;
 
-eM.textContent = sem
+eM.textContent = sem;
 
 }
     updateTime(); // Run immediately
@@ -42,4 +42,42 @@ eM.textContent = sem
     item.classList.add("active");
    
   });
+});
+
+
+
+// Get the form and the success message element
+const form = document.getElementById('contact-form');
+const successMessage = document.querySelector('[data-testid="test-contact-success"]');
+const errorMessages = document.querySelectorAll('.error-message');
+
+
+function handleSubmit(e) {
+
+    e.preventDefault(); 
+
+    successMessage.style.display = 'none';
+    errorMessages.forEach(el => el.textContent = '');
+    const formIsValid = form.checkValidity();
+
+    if (formIsValid) {
+        successMessage.style.display = 'block';
+        successMessage.textContent = 'Thank you for reaching out! We have received your message and will get back to you shortly.';
+        // 4. Clear the form for a clean user experience
+        form.reset(); 
+
+        // Important: Return false to reinforce that the form should NOT follow its default action.
+        return false; 
+
+    } else {
+        // 🛑 VALIDATION FAILED 🛑
+      
+        form.reportValidity(); 
+        return false;
+    }
+}
+
+
+form.addEventListener('input', () => {
+    successMessage.style.display = 'none';
 });
